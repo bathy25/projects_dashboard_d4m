@@ -1,0 +1,50 @@
+
+name: Deploy Streamlit App
+
+on:
+  push:
+    branches:
+      - main # Trigger on pushes to the 'main' branch
+      # You can add other branches if needed, e.g., 'staging'
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.9' # Specify your Python version
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    # If you have tests, you could add a step here:
+    # - name: Run tests
+    #   run: python -m pytest
+
+    # For Streamlit Community Cloud, the deployment is handled automatically
+    # when you connect your GitHub repo to their service. You don't usually
+    # need explicit deployment steps within this workflow for SCC.
+    # However, for other platforms (e.g., Heroku, custom server), you'd add
+    # your specific deployment commands here.
+    # Example (hypothetical): Deployment to a custom server via SSH
+    # - name: Deploy to Custom Server
+    #   if: success() # Only run if previous steps succeeded
+    #   uses: appleboy/ssh-action@master
+    #   with:
+    #     host: ${{ secrets.SSH_HOST }}
+    #     username: ${{ secrets.SSH_USERNAME }}
+    #     key: ${{ secrets.SSH_PRIVATE_KEY }}
+    #     script: |
+    #       cd /var/www/streamlit_app
+    #       git pull origin main
+    #       pip install -r requirements.txt
+    #       sudo systemctl restart streamlit_app.service
+
