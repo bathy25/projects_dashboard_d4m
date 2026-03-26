@@ -142,7 +142,7 @@ def render_overview_page(df):
 
     st.markdown("---") # Separator
 
-    st.subheader("🗺️ Project Locations Map")
+    st.subheader("Project Locations Map")
     coords = {
         "Nhamatanda": (-19.2, 34.8),
         "Bazaruto": (-21.6, 35.4),
