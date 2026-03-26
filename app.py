@@ -69,7 +69,7 @@ def load_and_preprocess_data():
         "Partner": [
             "Dorcas","African Parks","SNV","Data4Moz","CI",
             "ESA","USAID","MINAMB","African Parks","UNDP",
-            "UNDP","UNDP","UNDP","Litterati","Data44Moz"
+            "UNDP","UNDP","UNDP","Litterati","Data4Moz"
         ]
     }
     df = pd.DataFrame(data)
